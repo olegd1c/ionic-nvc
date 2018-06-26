@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <!--ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons-->
+    <ion-title>Бібліотека</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding (swipe)="swipe($event)">
+  <h3 text-center> Виберіть необхідні карточки</h3>
+  <ion-list>
+    <button 
+      ion-item 
+      *ngFor="let item of qoutes"
+      [navPush]="qoutesPage"
+      [navParams] = "item"
+      [ngClass]="'type_'+item.type"
+    >
+      <ion-icon [name]="item.icon" item-left></ion-icon>
+      <h2>{{item.category | uppercase}}</h2>
+      <p>{{item.quotes.length}} Quotes</p>
+    </button>
+  </ion-list>
+</ion-content>
